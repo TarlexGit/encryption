@@ -5,7 +5,7 @@ from Crypto.Util.Padding import pad
 from base64 import b64decode 
 
 
-def encrypt_file(key, in_filename, out_filename=None, init_vector=None, chunksize=64*1024): 
+def encrypt_file(in_filename, key, init_vector=None,  out_filename=None, chunksize=64*1024): 
     check_encrypt_sign = 0
     try: 
         os.path.getsize(in_filename)
@@ -53,4 +53,4 @@ if __name__ == "__main__":
     with open('key.bin', 'rb') as keyfile:
         key = keyfile.read()
         print(key)
-        encrypt_file(key, "hello", init_vector=iv, out_filename="hello_enc")
+        encrypt_file("hello", key, init_vector=iv, out_filename="hello_enc")
